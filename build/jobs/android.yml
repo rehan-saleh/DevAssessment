@@ -1,0 +1,35 @@
+parameters:
+  solution: '**/*.sln'
+  appcenterKey: ''
+  artifactName: 'android'
+  environment: ''
+
+
+steps:
+- task: android-manifest-version.android-manifest-version@1
+  displayName: 'Bump Android Versions in AndroidManifest.xml'
+  inputs:
+    sourcePath: src/$(ProjectRootName).Android/Properties/AndroidManifest.xml
+    versionName: '1.0.$(Build.BuildId)'
+
+- template: ../steps/sdks.yml
+
+- template: ../steps/nuget.yml
+  parameters:
+    solution: ${{ parameters.solution }}
+
+- task: XamarinAndroid@1
+  displayName: 'Build Xamarin.Android project **/*Android*.csproj'
+  inputs:
+    projectFile: '**/*Android*.csproj'
+    outputDirectory: '$(Build.BinariesDirectory)/$(BuildConfiguration)'
+    configuration: '$(BuildConfiguration)'
+    msbuildArguments: '/t:SignAndroidPackage'
+  env:
+    Secret_AppCenterSecret: ${{ parameters.appcenterKey }}
+
+- task: PublishPipelineArtifact@0
+  displayName: 'Publish Artifact: Droid-${{ parameters.environment }}'
+  inputs:
+    artifactName: Droid-${{ parameters.environment }}
+    targetPath: '$(Build.BinariesDirectory)/$(BuildConfiguration)'
