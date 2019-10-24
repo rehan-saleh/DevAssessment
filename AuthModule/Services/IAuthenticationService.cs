@@ -1,4 +1,5 @@
 ﻿using MockAuthentication.Models;
+using System.Threading.Tasks;
 
 namespace AuthModule.Services
 {
@@ -6,5 +7,6 @@ namespace AuthModule.Services
     {
         AuthenticationReponse Login(string username, string password);
         void LogOut();
+        Task<string> CheckForTokenValidationAsync();
     }
 }

@@ -11,12 +11,9 @@ namespace MockAuthentication.Services
 
         private IJwtService JwtService { get; }
 
-        private IAuthContainer AuthContainer { get; }
-
-        public UserMockService(IJwtService jwtService, IAuthContainer authContainer)
+        public UserMockService(IJwtService jwtService)
         {
             JwtService = jwtService;
-            AuthContainer = authContainer;
 
             Users = new List<User>() {
                 new User { Email="rehan@test.com", Password="test", Role=Role.Admin },
@@ -31,12 +28,12 @@ namespace MockAuthentication.Services
             User user = Users.FirstOrDefault(x => x.Email.ToLower().Equals(username) && x.Password.Equals(password));
             if (user != null)
             {
-                AuthContainer.Claims = new List<Claim>() {
+                var claims = new List<Claim>() {
                     new Claim(ClaimTypes.Email, user.Email),
                     new Claim(ClaimTypes.Role, user.Role.ToString())
                 };
 
-                authenticationReponse.AccessToken = JwtService.GenerateToken(AuthContainer);
+                authenticationReponse.AccessToken = JwtService.GenerateToken(claims);
                 authenticationReponse.IsAuthenticated = true;
             }
             else
@@ -46,6 +43,11 @@ namespace MockAuthentication.Services
             }
 
             return authenticationReponse;
+        }
+
+        public bool CheckForTokenValidation(string token)
+        {
+            return JwtService.IsTokenValid(token);
         }
     }
 }
