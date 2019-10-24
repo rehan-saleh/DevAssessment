@@ -1,14 +1,16 @@
 ﻿using AuthModule;
 using AuthModule.Events;
-using DevAssessment.Views;
+using DevAssessment.Services;
 using Prism;
 using Prism.Events;
 using Prism.Ioc;
 using Prism.Logging;
 using Prism.Modularity;
+using Xamarin.Forms;
 
 namespace DevAssessment
 {
+    [AutoRegisterForNavigation]
     public partial class App
     {
         public App() : this(null)
@@ -31,8 +33,9 @@ namespace DevAssessment
 
         protected override void RegisterTypes(IContainerRegistry containerRegistry)
         {
-            containerRegistry.RegisterForNavigation<MainPage>();
+            containerRegistry.RegisterForNavigation<NavigationPage>();
             containerRegistry.Register<ILogger, ConsoleLoggingService>();
+            containerRegistry.Register<IMenuService, MenuService>();
         }
 
         protected override void ConfigureModuleCatalog(IModuleCatalog moduleCatalog)
@@ -44,12 +47,12 @@ namespace DevAssessment
 
         private async void NavigateAuthenticatedUser(string accessToken)
         {
-            await NavigationService.NavigateAsync("MainPage");
+            await NavigationService.NavigateAsync("/MainPage/NavigationPage/HomePage");
         }
 
         private async void NavigateLoggedOutUser()
         {
-            await NavigationService.NavigateAsync("LoginPage");
+            await NavigationService.NavigateAsync("/LoginPage");
         }
     }
 }
