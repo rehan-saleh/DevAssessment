@@ -1,14 +1,17 @@
 ﻿using AuthModule.Events;
 using AuthModule.Services;
 using MockAuthentication.Models;
+using Prism.AppModel;
 using Prism.Commands;
 using Prism.Events;
 using Prism.Mvvm;
 using System.Text.RegularExpressions;
+using Xamarin.Essentials;
+using Xamarin.Forms;
 
 namespace AuthModule.ViewModels
 {
-    public class LoginPageViewModel : BindableBase
+    public class LoginPageViewModel : BindableBase, IPageLifecycleAware
     {
         private IEventAggregator EventAggregator { get; }
         private IAuthenticationService AuthenticationService { get; }
@@ -19,6 +22,19 @@ namespace AuthModule.ViewModels
             EventAggregator = eventAggregator;
 
             OnLogin = new DelegateCommand(ExecuteLoginCommand);
+        }
+
+        public async void OnAppearing()
+        {
+            string accessToken = await AuthenticationService.CheckForTokenValidationAsync();
+            if (!string.IsNullOrEmpty(accessToken))
+            {
+                EventAggregator.GetEvent<UserAuthenticatedEvent>().Publish(accessToken);
+            }
+        }
+
+        public void OnDisappearing()
+        {
         }
 
         public string Email { get; set; }

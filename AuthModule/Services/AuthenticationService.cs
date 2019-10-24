@@ -1,8 +1,8 @@
 ﻿using MockAuthentication.Models;
 using MockAuthentication.Services;
 using Prism.Logging;
+using System.Threading.Tasks;
 using Xamarin.Essentials;
-using Xamarin.Forms;
 
 namespace AuthModule.Services
 {
@@ -21,7 +21,7 @@ namespace AuthModule.Services
             var response = UserMockService.Login(username, password);
             if (response.IsAuthenticated)
             {
-                Application.Current.Properties["access_token"] = response.AccessToken;
+                SecureStorage.SetAsync("access_token", response.AccessToken);
             }
             else
             {
@@ -32,7 +32,18 @@ namespace AuthModule.Services
 
         public void LogOut()
         {
-            Application.Current.Properties.Remove("access_token");
+            SecureStorage.Remove("access_token");
+        }
+
+        public async Task<string> CheckForTokenValidationAsync()
+        {
+            string token = await SecureStorage.GetAsync("access_token");
+            bool isTokenValid = UserMockService.CheckForTokenValidation(token);
+            if (isTokenValid)
+            {
+                return token;
+            }
+            return string.Empty;
         }
     }
 }

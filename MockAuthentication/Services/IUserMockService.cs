@@ -5,5 +5,6 @@ namespace MockAuthentication.Services
     public interface IUserMockService
     {
         AuthenticationReponse Login(string username, string password);
+        bool CheckForTokenValidation(string token);
     }
 }
