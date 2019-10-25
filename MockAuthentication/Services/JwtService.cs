@@ -21,7 +21,7 @@ namespace MockAuthentication.Services
 
             SecurityTokenDescriptor securityTokenDescriptor = new SecurityTokenDescriptor
             {
-                Subject = new ClaimsIdentity(AuthContainer.Claims),
+                Subject = new ClaimsIdentity(claims),
                 Expires = DateTime.UtcNow.AddMinutes(AuthContainer.ExpireMinutes),
                 SigningCredentials = new SigningCredentials(GetSymmetricSecurityKey(AuthContainer.SecretKey), AuthContainer.SecurityAlgorithm)
             };

@@ -6,8 +6,6 @@ using Prism.Commands;
 using Prism.Events;
 using Prism.Mvvm;
 using System.Text.RegularExpressions;
-using Xamarin.Essentials;
-using Xamarin.Forms;
 
 namespace AuthModule.ViewModels
 {
@@ -80,7 +78,7 @@ namespace AuthModule.ViewModels
         {
             const string pattern = @"^\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$";
             var regex = new Regex(pattern, RegexOptions.IgnoreCase);
-            if (!regex.IsMatch(Email))
+            if (string.IsNullOrEmpty(Email) || !regex.IsMatch(Email))
             {
                 SetErrorMessage();
                 return false;

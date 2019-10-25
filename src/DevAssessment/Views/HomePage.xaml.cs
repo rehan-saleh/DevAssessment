@@ -1,6 +1,4 @@
-﻿using DevAssessment.Helpers;
-using DevAssessment.Views;
-using Xamarin.Forms;
+﻿using Xamarin.Forms;
 
 namespace DevAssessment.Views
 {

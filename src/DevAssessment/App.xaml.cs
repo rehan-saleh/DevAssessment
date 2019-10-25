@@ -1,4 +1,5 @@
-﻿using AuthModule;
+﻿using AdminModule;
+using AuthModule;
 using AuthModule.Events;
 using DevAssessment.Services;
 using Prism;
@@ -6,6 +7,9 @@ using Prism.Events;
 using Prism.Ioc;
 using Prism.Logging;
 using Prism.Modularity;
+using Prism.Navigation;
+using System;
+using System.Linq;
 using Xamarin.Forms;
 
 namespace DevAssessment
@@ -43,15 +47,30 @@ namespace DevAssessment
             base.ConfigureModuleCatalog(moduleCatalog);
 
             moduleCatalog.AddModule<AuthenticationModule>();
+
+            Type adminModuleType = typeof(AdministratorModule);
+            moduleCatalog.AddModule(new ModuleInfo(adminModuleType)
+            {
+                ModuleName = adminModuleType.Name,
+                InitializationMode = InitializationMode.OnDemand
+            });
         }
 
         private async void NavigateAuthenticatedUser(string accessToken)
         {
-            await NavigationService.NavigateAsync("/MainPage/NavigationPage/HomePage");
+            await NavigationService.NavigateAsync("/MainPage/NavigationPage/HomePage", ("access_token", accessToken));
         }
 
         private async void NavigateLoggedOutUser()
         {
+            var moduleList = ModuleCatalog.Modules.ToList();
+            var adminModule = moduleList.Find(x => x.ModuleName.Equals(nameof(AdministratorModule)));
+
+            if (adminModule != null)
+            {
+                adminModule.State = ModuleState.NotStarted;
+            }
+
             await NavigationService.NavigateAsync("/LoginPage");
         }
     }
