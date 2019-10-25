@@ -1,8 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-
+﻿using DevAssessment.iOS.Services;
+using DevAssessment.Services;
 using Foundation;
+using Prism;
+using Prism.Ioc;
 using UIKit;
 
 namespace DevAssessment.iOS
@@ -11,7 +11,7 @@ namespace DevAssessment.iOS
     // User Interface of the application, as well as listening (and optionally responding) to 
     // application events from iOS.
     [Register("AppDelegate")]
-    public partial class AppDelegate : global::Xamarin.Forms.Platform.iOS.FormsApplicationDelegate
+    public partial class AppDelegate : global::Xamarin.Forms.Platform.iOS.FormsApplicationDelegate, IPlatformInitializer
     {
         //
         // This method is invoked when the application has loaded and is ready to run. In this 
@@ -23,9 +23,16 @@ namespace DevAssessment.iOS
         public override bool FinishedLaunching(UIApplication app, NSDictionary options)
         {
             global::Xamarin.Forms.Forms.Init();
-            LoadApplication(new App());
+            LoadApplication(new App(this));
 
             return base.FinishedLaunching(app, options);
+        }
+
+        public void RegisterTypes(IContainerRegistry containerRegistry)
+        {
+            containerRegistry.Register<IDeviceOrientationService, DeviceOrientationService>();
+            containerRegistry.Register<ITextToSpeechService, TextToSpeechService>();
+            containerRegistry.Register<IPhotoPickerService, PhotoPickerService>();
         }
     }
 }
