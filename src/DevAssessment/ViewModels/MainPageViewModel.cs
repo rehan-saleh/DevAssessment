@@ -1,28 +1,37 @@
-﻿using AuthModule.Events;
+﻿using AdminModule;
+using AuthModule.Events;
+using AuthModule.Services;
 using AuthModule.Views;
 using DevAssessment.Models;
 using DevAssessment.Services;
+using MockAuthentication.Models;
 using Prism.AppModel;
 using Prism.Commands;
 using Prism.Events;
+using Prism.Modularity;
 using Prism.Mvvm;
 using Prism.Navigation;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using Xamarin.Essentials;
 using Xamarin.Forms;
 
 namespace DevAssessment.ViewModels
 {
-    public class MainPageViewModel : BindableBase, IPageLifecycleAware
+    public class MainPageViewModel : BindableBase, IPageLifecycleAware, IInitialize
     {
         private IMenuService MenuService { get; }
+        public IModuleManager ModuleManager { get; }
         private INavigationService NavigationService { get; }
         private IEventAggregator EventAggregator { get; }
+        private string AccessToken { get; set; }
+        private LoggedInUser LoggedInUser { get; set; }
 
-        public MainPageViewModel(INavigationService navigationService, IMenuService menuService, IEventAggregator eventAggregator)
+        public MainPageViewModel(INavigationService navigationService, IMenuService menuService, IEventAggregator eventAggregator, IAuthenticationService authenticationService, IModuleManager moduleManager)
         {
             MenuService = menuService;
             NavigationService = navigationService;
+            ModuleManager = moduleManager;
             EventAggregator = eventAggregator;
 
             Title = "Dev Assessment Test";
@@ -31,13 +40,30 @@ namespace DevAssessment.ViewModels
             LogOutCommand = new DelegateCommand(ExecuteLogOutCommand);
         }
 
+        public void Initialize(INavigationParameters parameters)
+        {
+            AccessToken = parameters.GetValue<string>("access_token");
+            LoggedInUser = new LoggedInUser(AccessToken);
+        }
+
         public void OnAppearing()
         {
             if (Device.Idiom == TargetIdiom.Desktop || Device.Idiom == TargetIdiom.TV || (Device.Idiom == TargetIdiom.Tablet && DeviceDisplay.MainDisplayInfo.Orientation == DisplayOrientation.Landscape))
             {
                 IsPresented = true;
             }
+
+            if (LoggedInUser != null && LoggedInUser.Role.Equals(nameof(Role.Admin)))
+            {
+                ModuleManager.LoadModule(nameof(AdministratorModule));
+            }
+
+            MenuService.ClearMenuItems();
+            MenuService.LoadMenuItems();
+            
+            Items = new ObservableCollection<Item>(MenuService.Items);
         }
+
 
         public void OnDisappearing()
         {
@@ -52,7 +78,11 @@ namespace DevAssessment.ViewModels
         }
         private bool _isPresented;
 
-        public IEnumerable<Item> Items { get; set; }
+        public IEnumerable<Item> Items { 
+            get => items; 
+            set => SetProperty(ref items, value); 
+        }
+        private IEnumerable<Item> items;
 
         public DelegateCommand LogOutCommand { get; }
 

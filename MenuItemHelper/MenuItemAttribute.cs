@@ -1,9 +1,9 @@
 ﻿using System;
 
-namespace DevAssessment.Helpers
+namespace MenuItemHelper
 {
     [AttributeUsage(AttributeTargets.Assembly, AllowMultiple = true)]
-    internal sealed class MenuItemAttribute : Attribute
+    public class MenuItemAttribute : Attribute
     {
         public MenuItemAttribute(string displayName, string navigationUri)
         {

@@ -16,8 +16,9 @@ namespace MockAuthentication.Services
             JwtService = jwtService;
 
             Users = new List<User>() {
-                new User { Email="rehan@test.com", Password="test", Role=Role.Admin },
-                new User { Email="rehan@ap.com", Password="test", Role=Role.User }
+                new User { Email="admin@ap.com", Password="test", Role=Role.Admin },
+                new User { Email="rehan@ap.com", Password="test", Role=Role.User },
+                new User { Email="test@ap.com", Password="test", Role=Role.User }
             };
         }
 
