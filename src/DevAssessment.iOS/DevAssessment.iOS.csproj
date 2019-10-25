@@ -133,4 +133,7 @@
       <Name>DevAssessment</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\user.png" />
+  </ItemGroup>
 </Project>
