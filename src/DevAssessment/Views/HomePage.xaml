@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:prism="http://prismlibrary.com"
              prism:ViewModelLocator.AutowireViewModel="True"
-             x:Class="DevAssessment.Views.HomePage">
+             x:Class="DevAssessment.Views.HomePage" Visual="Material">
   <StackLayout Padding="20">
     <Label Text="Welcome to Dev Assessment" HorizontalOptions="Center" VerticalOptions="CenterAndExpand" />
   </StackLayout>
