@@ -5,7 +5,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Prism.DryIoc.Forms.Extended" Version="7.2.0.661" />
+    <PackageReference Include="Prism.DryIoc.Forms" Version="7.2.0.1367" />
     <PackageReference Include="Xamarin.Forms" Version="4.3.0.908675" />
   </ItemGroup>
 

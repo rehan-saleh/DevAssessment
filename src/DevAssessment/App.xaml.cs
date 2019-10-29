@@ -2,6 +2,7 @@
 using AuthModule;
 using AuthModule.Events;
 using DevAssessment.Services;
+using DryIoc;
 using Prism;
 using Prism.Events;
 using Prism.Ioc;
@@ -56,6 +57,11 @@ namespace DevAssessment
             });
         }
 
+        protected override Rules CreateContainerRules()
+        {
+            return base.CreateContainerRules().WithoutThrowOnRegisteringDisposableTransient();
+        }
+
         private async void NavigateAuthenticatedUser(string accessToken)
         {
             await NavigationService.NavigateAsync("/MainPage/NavigationPage/HomePage", ("access_token", accessToken));
@@ -63,7 +69,7 @@ namespace DevAssessment
 
         private async void NavigateLoggedOutUser()
         {
-            var moduleList = ModuleCatalog.Modules.ToList();
+            var moduleList = Container.Resolve<IModuleCatalog>().Modules.ToList();
             var adminModule = moduleList.Find(x => x.ModuleName.Equals(nameof(AdministratorModule)));
 
             if (adminModule != null)
