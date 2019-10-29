@@ -2,6 +2,8 @@
 using AuthModule;
 using AuthModule.Events;
 using DevAssessment.Services;
+using DevAssessment.ViewModels;
+using DevAssessment.Views;
 using DryIoc;
 using Prism;
 using Prism.Events;
@@ -9,6 +11,7 @@ using Prism.Ioc;
 using Prism.Logging;
 using Prism.Modularity;
 using Prism.Navigation;
+using Prism.Services.Dialogs;
 using System;
 using System.Linq;
 using Xamarin.Forms;
@@ -41,6 +44,9 @@ namespace DevAssessment
             containerRegistry.RegisterForNavigation<NavigationPage>();
             containerRegistry.Register<ILogger, ConsoleLoggingService>();
             containerRegistry.Register<IMenuService, MenuService>();
+            containerRegistry.Register<IDialogService, DialogService>();
+            containerRegistry.RegisterDialog<AlertDialogPage, AlertDialogPageViewModel>();
+            containerRegistry.RegisterDialog<ErrorDialogPage, ErrorDialogPageViewModel>();
         }
 
         protected override void ConfigureModuleCatalog(IModuleCatalog moduleCatalog)
