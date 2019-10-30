@@ -3,10 +3,14 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:prism="http://prismlibrary.com"
              prism:ViewModelLocator.AutowireViewModel="True"
-             x:Class="DevAssessment.Views.DialogDisplayPage">
+             x:Class="DevAssessment.Views.DialogDisplayPage"
+             xmlns:resource="clr-namespace:Common.Localization;assembly=Common"
+             Title="{x:Static resource:AppResources.DialogDisplayPageTitle}">
   <StackLayout Padding="20">
-    <Label Text="Select an alert to display" FontAttributes="Bold" />
-    <Button Text="Display alert dialog" Command="{Binding DisplayAlertDialogCommand}" />
-    <Button Text="Display error dialog" Command="{Binding DisplayErrorDialogCommand}" />
+    <Label Text="{x:Static resource:AppResources.SelectAlertToDisplayLabel}" FontAttributes="Bold" />
+    <Button Text="{x:Static resource:AppResources.DisplayAlertDialogButtonLabel}" 
+            Command="{Binding DisplayAlertDialogCommand}" />
+    <Button Text="{x:Static resource:AppResources.DisplayErrorDialogButtonLabel}" 
+            Command="{Binding DisplayErrorDialogCommand}" />
   </StackLayout>
 </ContentPage>

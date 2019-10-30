@@ -3,13 +3,18 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:prism="http://prismlibrary.com"
              prism:ViewModelLocator.AutowireViewModel="True"
-             x:Class="AuthModule.Views.LoginPage" Visual="Material">
+             x:Class="AuthModule.Views.LoginPage" Visual="Material"
+             xmlns:resource="clr-namespace:Common.Localization;assembly=Common">
   <StackLayout Padding="20">
-    <Label Text="Login" HorizontalOptions="Center" FontSize="Large"/>
-    <Entry Placeholder="Enter Email" Text="{Binding Email}" Keyboard="Email" />
-    <Entry Placeholder="Enter Password" Text="{Binding Password}" IsPassword="True" />
+    <Label Text="{x:Static resource:AppResources.LoginLabel}" HorizontalOptions="Center" FontSize="Large"/>
+    <Entry Placeholder="{x:Static resource:AppResources.EnterEmailLabel}" 
+           Text="{Binding Email}" Keyboard="Email" />
+    <Entry Placeholder="{x:Static resource:AppResources.EnterPasswordLabel}" 
+           Text="{Binding Password}" IsPassword="True" />
     <Label Text="{Binding ErrorMessage}" TextColor="Red" HorizontalOptions="CenterAndExpand" />
-    <Label Text="Signing in" TextColor="Red" HorizontalOptions="CenterAndExpand" IsVisible="{Binding Busy, Mode=OneWay}" />
-    <Button Text="Login" HorizontalOptions="CenterAndExpand" Command="{Binding OnLogin}" />
+    <Label Text="{x:Static resource:AppResources.SigningInLabel}" TextColor="Red" 
+           HorizontalOptions="CenterAndExpand" IsVisible="{Binding Busy, Mode=OneWay}" />
+    <Button Text="{x:Static resource:AppResources.LoginLabel}" HorizontalOptions="CenterAndExpand" 
+            Command="{Binding OnLogin}" />
   </StackLayout>
 </ContentPage>

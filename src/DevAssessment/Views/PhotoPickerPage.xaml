@@ -4,11 +4,14 @@
              xmlns:prism="http://prismlibrary.com"
              prism:ViewModelLocator.AutowireViewModel="True"
              x:Class="DevAssessment.Views.PhotoPickerPage" 
-             Visual="Material">
+             Visual="Material" 
+             xmlns:resource="clr-namespace:Common.Localization;assembly=Common"
+             Title="{x:Static resource:AppResources.PhotoPickerPageTitle}">
 
   <StackLayout Padding="20">
-    <Label Text="Pick a photo" />
-    <Button Text="Pick Photo" Command="{Binding PickPhotoCommand}" Style="{DynamicResource NavigationBarColor}" />
+    <Label Text="{x:Static resource:AppResources.PickPhotoLabel}" />
+    <Button Text="{x:Static resource:AppResources.PickPhotoButtonLabel}" 
+            Command="{Binding PickPhotoCommand}" Style="{DynamicResource NavigationBarColor}" />
     <Image Source="{Binding Image}" />
   </StackLayout>
 </ContentPage>

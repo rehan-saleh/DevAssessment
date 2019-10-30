@@ -8,11 +8,12 @@
                   prism:ViewModelLocator.AutowireViewModel="True"
                   x:Class="DevAssessment.Views.MainPage"
                   IsPresented="{Binding IsPresented, Mode=TwoWay}" 
-                  Visual="Material">
+                  Visual="Material" 
+                  xmlns:resource="clr-namespace:Common.Localization;assembly=Common">
   <MasterDetailPage.Master>
     <ContentPage Title="Menu">
       <StackLayout Padding="20" Margin="0,10,0,0">
-        <Label Text="Dev Assessment" FontSize="Medium" FontAttributes="Bold" />
+        <Label Text="{x:Static resource:AppResources.DevAssessmentLabel}" FontSize="Medium" FontAttributes="Bold" />
         <StackLayout Padding="40" Visual="Default">
           <Frame CornerRadius="100" HeightRequest="200" HorizontalOptions="Center" Padding="0" IsClippedToBounds="True">
             <Image Source="user.png" HorizontalOptions="Center" VerticalOptions="Center" />

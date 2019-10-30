@@ -4,10 +4,13 @@
              xmlns:prism="http://prismlibrary.com"
              prism:ViewModelLocator.AutowireViewModel="True"
              x:Class="DevAssessment.Views.DeviceOrientationPage"
-             Visual="Material">
+             Visual="Material"
+             xmlns:resource="clr-namespace:Common.Localization;assembly=Common"
+             Title="{x:Static resource:AppResources.DeviceOrientationPageTitle}">
   <StackLayout Padding="20">
-    <Label Text="Current orientation"/>
+    <Label Text="{x:Static resource:AppResources.CurrentOrientationLabel}"/>
     <Label Text="{Binding CurrentOrientation}" />
-    <Button Text="Get Orientation" Command="{Binding GetDeviceOrientationCommand}" />
+    <Button Text="{x:Static resource:AppResources.GetOrientationButtonLabel}" 
+            Command="{Binding GetDeviceOrientationCommand}" />
   </StackLayout>
 </ContentPage>

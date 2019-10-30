@@ -1,6 +1,7 @@
 ﻿using AdminModule;
 using AuthModule;
 using AuthModule.Events;
+using Common.Localization;
 using DevAssessment.Services;
 using DevAssessment.ViewModels;
 using DevAssessment.Views;
@@ -37,6 +38,14 @@ namespace DevAssessment
             var eventAggregator = Container.Resolve<IEventAggregator>();
             eventAggregator.GetEvent<UserAuthenticatedEvent>().Subscribe(NavigateAuthenticatedUser);
             eventAggregator.GetEvent<UserLoggedOutEvent>().Subscribe(NavigateLoggedOutUser);
+
+            if (Device.RuntimePlatform == Device.iOS || Device.RuntimePlatform == Device.Android)
+            {
+                var locale = Container.Resolve<ILocalize>();
+                var ci = locale.GetCurrentCultureInfo();
+                AppResources.Culture = ci;
+                locale.SetLocale(ci);
+            }
 
             await NavigationService.NavigateAsync("LoginPage");
         }

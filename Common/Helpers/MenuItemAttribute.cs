@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Common.Localization;
+using System;
 
 namespace Common.Helpers
 {
@@ -7,7 +8,7 @@ namespace Common.Helpers
     {
         public MenuItemAttribute(string displayName, string navigationUri, string glyph)
         {
-            DisplayName = displayName;
+            DisplayName = AppResources.ResourceManager.GetString(displayName);
             NavigationUri = navigationUri;
             Glyph = glyph;
         }

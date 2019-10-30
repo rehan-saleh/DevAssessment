@@ -1,4 +1,5 @@
-﻿using DevAssessment.Extensions;
+﻿using Common.Localization;
+using DevAssessment.Extensions;
 using Prism.Commands;
 using Prism.Mvvm;
 using Prism.Services.Dialogs;
@@ -21,7 +22,7 @@ namespace DevAssessment.ViewModels
 
         private void DisplayAlertDialog()
         {
-            DialogService.DisplayAlert("Hello World!");
+            DialogService.DisplayAlert(AppResources.HelloWorldMessage);
         }
 
         private void DisplayErrorDialog()

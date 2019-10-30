@@ -1,4 +1,6 @@
-﻿using DevAssessment.iOS.Services;
+﻿using Common.Localization;
+using DevAssessment.iOS.Localization;
+using DevAssessment.iOS.Services;
 using DevAssessment.Services;
 using Foundation;
 using Prism;
@@ -35,6 +37,7 @@ namespace DevAssessment.iOS
             containerRegistry.Register<IDeviceOrientationService, DeviceOrientationService>();
             containerRegistry.Register<ITextToSpeechService, TextToSpeechService>();
             containerRegistry.Register<IPhotoPickerService, PhotoPickerService>();
+            containerRegistry.Register<ILocalize, Localize>();
         }
     }
 }

@@ -4,10 +4,13 @@
              xmlns:prism="http://prismlibrary.com"
              prism:ViewModelLocator.AutowireViewModel="True"
              x:Class="DevAssessment.Views.TextToSpeechPage" 
-             Visual="Material">
+             Visual="Material"
+             xmlns:resource="clr-namespace:Common.Localization;assembly=Common"
+             Title="{x:Static resource:AppResources.TextToSpeechPageTitle}">
   <StackLayout Padding="20">
-    <Label Text="Enter text to speak" />
+    <Label Text="{x:Static resource:AppResources.EnterTextToSpeakLabel}" />
     <Entry Text="{Binding TextToSpeak}" />
-    <Button Text="Speak" Command="{Binding SpeakCommand}" />
+    <Button Text="{x:Static resource:AppResources.SpeakButtonLabel}" 
+            Command="{Binding SpeakCommand}" />
   </StackLayout>
 </ContentPage>

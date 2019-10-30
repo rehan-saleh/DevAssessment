@@ -1,5 +1,6 @@
 ﻿using AuthModule.Events;
 using AuthModule.Services;
+using Common.Localization;
 using MockAuthentication.Models;
 using Prism.AppModel;
 using Prism.Commands;
@@ -89,7 +90,7 @@ namespace AuthModule.ViewModels
 
         private void SetErrorMessage()
         {
-            ErrorMessage = "Invalid username or password.";
+            ErrorMessage = AppResources.InvalidUsernamePasswordErrorMessageLabel;
         }
     }
 }

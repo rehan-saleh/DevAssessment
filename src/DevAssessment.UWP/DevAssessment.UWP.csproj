@@ -154,6 +154,10 @@
     </PackageReference>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\Common\Common.csproj">
+      <Project>{CF30DC43-D68D-48D1-91E6-A14F301D264C}</Project>
+      <Name>Common</Name>
+    </ProjectReference>
     <ProjectReference Include="..\DevAssessment\DevAssessment.csproj">
       <Project>{9BEC80C6-1774-4872-887E-460AE1DBB5FA}</Project>
       <Name>DevAssessment</Name>
