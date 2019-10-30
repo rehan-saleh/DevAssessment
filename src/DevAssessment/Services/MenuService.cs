@@ -1,5 +1,6 @@
-﻿using DevAssessment.Models;
-using Helpers;
+﻿using Common.Fonts;
+using Common.Helpers;
+using DevAssessment.Models;
 using Prism.Modularity;
 using System;
 using System.Collections.Generic;
@@ -37,8 +38,8 @@ namespace DevAssessment.Services
             }
 
             var itemList = new List<Item>();
-            itemList.AddRange(menuItemAttributes.Select(x => new Item() { ItemName = x.DisplayName, NavigationUri = x.NavigationUri }).ToList());
-            itemList.Add(new Item { ItemName = "Logout", NavigationUri = "LoginPage" });
+            itemList.AddRange(menuItemAttributes.Select(x => new Item() { ItemName = x.DisplayName, NavigationUri = x.NavigationUri, Glyph = x.Glyph }).ToList());
+            itemList.Add(new Item { ItemName = "Logout", NavigationUri = "LoginPage", Glyph = FontAwesomeSolidIconDictionary.SignOutAlt });
             Items = new ObservableCollection<Item>(itemList);
         }
 

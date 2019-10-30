@@ -1,7 +1,11 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <MasterDetailPage xmlns="http://xamarin.com/schemas/2014/forms" 
-                  xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+                  xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                  xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+                  xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                  mc:Ignorable="d" 
                   xmlns:prism="http://prismlibrary.com" 
+                  prism:ViewModelLocator.AutowireViewModel="True"
                   x:Class="DevAssessment.Views.MainPage"
                   IsPresented="{Binding IsPresented, Mode=TwoWay}" 
                   Visual="Material">
@@ -21,7 +25,22 @@
           </ListView.Behaviors>
           <ListView.ItemTemplate>
             <DataTemplate>
-              <TextCell Text="{Binding ItemName}" />
+              <ViewCell>
+                <Grid Padding="10">
+                  <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="20"/>
+                    <ColumnDefinition Width="*"/>
+                  </Grid.ColumnDefinitions>
+                  <Label Text="{Binding Glyph}"
+                         VerticalTextAlignment="Center"
+                         VerticalOptions="Center"
+                         FontFamily="{DynamicResource FaSolid}"/>
+                  <Label Text="{Binding ItemName}"
+                         Grid.Column="1"
+                         VerticalTextAlignment="Center"
+                         VerticalOptions="Center" />
+                </Grid>
+              </ViewCell>
             </DataTemplate>
           </ListView.ItemTemplate>
         </ListView>
