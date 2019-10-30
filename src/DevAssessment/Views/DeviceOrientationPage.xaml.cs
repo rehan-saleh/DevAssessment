@@ -1,9 +1,10 @@
 ﻿using Common.Fonts;
 using Common.Helpers;
+using Common.Localization;
 using DevAssessment.Views;
 using Xamarin.Forms;
 
-[assembly: MenuItem("Device Orientation", nameof(DeviceOrientationPage), FontAwesomeSolidIconDictionary.Mobile)]
+[assembly: MenuItem(nameof(AppResources.DeviceOrientationPageTitle), nameof(DeviceOrientationPage), FontAwesomeSolidIconDictionary.Mobile)]
 namespace DevAssessment.Views
 {
     public partial class DeviceOrientationPage : ContentPage

@@ -3,8 +3,11 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:prism="http://prismlibrary.com"
              prism:ViewModelLocator.AutowireViewModel="True"
-             x:Class="DevAssessment.Views.HomePage" Visual="Material">
+             x:Class="DevAssessment.Views.HomePage" Visual="Material"
+             xmlns:resource="clr-namespace:Common.Localization;assembly=Common"
+             Title="{x:Static resource:AppResources.HomePageTitle}">
   <StackLayout Padding="20">
-    <Label Text="Welcome to Dev Assessment" HorizontalOptions="Center" VerticalOptions="CenterAndExpand" />
+    <Label Text="{x:Static resource:AppResources.WelcomeLabel}" HorizontalOptions="Center" 
+           VerticalOptions="CenterAndExpand" />
   </StackLayout>
 </ContentPage>

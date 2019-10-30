@@ -3,8 +3,10 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:prism="http://prismlibrary.com"
              prism:ViewModelLocator.AutowireViewModel="True"
-             x:Class="AdminModule.Views.AdminPage" Visual="Material">
+             x:Class="AdminModule.Views.AdminPage" Visual="Material"
+             xmlns:resource="clr-namespace:Common.Localization;assembly=Common"
+             Title="{x:Static resource:AppResources.AdminPageTitle}">
   <StackLayout Padding="20">
-    <Label Text="Admin Page" />
+    <Label Text="{x:Static resource:AppResources.AdminPageTitle}" />
   </StackLayout>
 </ContentPage>

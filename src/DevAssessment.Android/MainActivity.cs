@@ -13,6 +13,8 @@ using Prism.Ioc;
 using DevAssessment.Services;
 using DevAssessment.Droid.Services;
 using Android.Content;
+using Common.Localization;
+using DevAssessment.Droid.Localization;
 
 namespace DevAssessment.Droid
 {
@@ -73,6 +75,7 @@ namespace DevAssessment.Droid
             containerRegistry.Register<IDeviceOrientationService, DeviceOrientationService>();
             containerRegistry.Register<ITextToSpeechService, TextToSpeechService>();
             containerRegistry.Register<IPhotoPickerService, PhotoPickerService>();
+            containerRegistry.Register<ILocalize, Localize>();
         }
     }
 }

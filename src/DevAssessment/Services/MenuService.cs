@@ -1,5 +1,6 @@
 ﻿using Common.Fonts;
 using Common.Helpers;
+using Common.Localization;
 using DevAssessment.Models;
 using Prism.Modularity;
 using System;
@@ -39,7 +40,7 @@ namespace DevAssessment.Services
 
             var itemList = new List<Item>();
             itemList.AddRange(menuItemAttributes.Select(x => new Item() { ItemName = x.DisplayName, NavigationUri = x.NavigationUri, Glyph = x.Glyph }).ToList());
-            itemList.Add(new Item { ItemName = "Logout", NavigationUri = "LoginPage", Glyph = FontAwesomeSolidIconDictionary.SignOutAlt });
+            itemList.Add(new Item { ItemName = AppResources.LogoutButtonLabel, NavigationUri = "LoginPage", Glyph = FontAwesomeSolidIconDictionary.SignOutAlt });
             Items = new ObservableCollection<Item>(itemList);
         }
 

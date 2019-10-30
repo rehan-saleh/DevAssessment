@@ -1,4 +1,5 @@
-﻿using MockAuthentication.Models;
+﻿using Common.Localization;
+using MockAuthentication.Models;
 using System.Collections.Generic;
 using System.Linq;
 using System.Security.Claims;
@@ -40,7 +41,7 @@ namespace MockAuthentication.Services
             else
             {
                 authenticationReponse.IsAuthenticated = false;
-                authenticationReponse.Error = "Login failed.";
+                authenticationReponse.Error = AppResources.LoginFailedErrorMessageLabel;
             }
 
             return authenticationReponse;
