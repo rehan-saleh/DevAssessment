@@ -1,8 +1,9 @@
 ﻿using AdminModule.Views;
-using Helpers;
+using Common.Fonts;
+using Common.Helpers;
 using Xamarin.Forms;
 
-[assembly: MenuItem("Admin", nameof(AdminPage))]
+[assembly: MenuItem("Admin", nameof(AdminPage), FontAwesomeSolidIconDictionary.User)]
 namespace AdminModule.Views
 {
     public partial class AdminPage : ContentPage

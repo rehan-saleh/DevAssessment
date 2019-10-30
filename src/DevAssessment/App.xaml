@@ -4,9 +4,9 @@
              xmlns:prism="clr-namespace:Prism.DryIoc;assembly=Prism.DryIoc.Forms"
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-             mc:Ignorable="d" x:Class="DevAssessment.App">
+             mc:Ignorable="d"
+             x:Class="DevAssessment.App">
   <prism:PrismApplication.Resources>
-
     <Style TargetType="NavigationPage">
       <Setter Property="BarBackgroundColor" Value="{x:DynamicResource NavigationBarColor}" />
       <Setter Property="BarTextColor" Value="{DynamicResource SecondaryTextColor}" />
@@ -20,5 +20,12 @@
       <Setter Property="TextColor" Value="White" />
       <Setter Property="BackgroundColor" Value="{DynamicResource ButtonColor}" />
     </Style>
+
+
+    <OnPlatform x:TypeArguments="x:String" x:Key="FaSolid">
+      <On Platform="Android" Value="FontAwesome5Solid.otf#Regular" />
+      <On Platform="iOS" Value="FontAwesome5Free-Solid" />
+      <On Platform="UWP" Value="/Assets/Fonts/FontAwesome5Solid.otf#Font Awesome 5 Free" />
+    </OnPlatform>
   </prism:PrismApplication.Resources>
 </prism:PrismApplication>

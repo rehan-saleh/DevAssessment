@@ -4,5 +4,6 @@
     {
         public string ItemName { get; set; }
         public string NavigationUri { get; set; }
+        public string Glyph { get; set; }
     }
 }

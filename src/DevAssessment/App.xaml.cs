@@ -23,11 +23,13 @@ namespace DevAssessment
     {
         public App() : this(null)
         {
+            InitializeComponent();
         }
 
         public App(IPlatformInitializer initializer)
             : base(initializer)
         {
+            InitializeComponent();
         }
 
         protected async override void OnInitialized()
