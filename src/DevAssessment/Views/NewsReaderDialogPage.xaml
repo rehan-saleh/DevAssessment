@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Frame xmlns="http://xamarin.com/schemas/2014/forms"
+       xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+       xmlns:prism="http://prismlibrary.com"
+       prism:ViewModelLocator.AutowireViewModel="True"
+       x:Class="DevAssessment.Views.NewsReaderDialogPage"
+       xmlns:resource="clr-namespace:Common.Localization;assembly=Common"
+       Padding="0">
+  <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+    <StackLayout Margin="0" Padding="0">
+      <Label Text="{x:Static resource:AppResources.HeadlinesListPageTitle}" 
+             HorizontalOptions="CenterAndExpand" Padding="10" />
+    </StackLayout>
+    <StackLayout>
+      <WebView x:Name="NewsWebView" Source="{Binding Url}" Margin="0" WidthRequest="350"
+             HeightRequest="450" Navigating="NewsWebView_Navigating" Navigated="NewsWebView_Navigated"/>
+      <Button Margin="5" Text="{x:Static resource:AppResources.DialogCloseButtonLabel}" 
+              HorizontalOptions="CenterAndExpand" Command="{Binding CloseCommand}"/>
+    </StackLayout>
+    <StackLayout x:Name="Loader" Padding="12" BackgroundColor="Transparent"
+                 VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand">
+      <ActivityIndicator IsRunning="{Binding Source={x:Reference Loader}, Path=IsVisible}" />
+    </StackLayout>
+  </StackLayout>
+</Frame>

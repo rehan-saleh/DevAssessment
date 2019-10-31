@@ -126,6 +126,9 @@
   <data name="AlertDialogLabel" xml:space="preserve">
     <value>Alert</value>
   </data>
+  <data name="BusinessCategoryLabel" xml:space="preserve">
+    <value>Business</value>
+  </data>
   <data name="CurrentOrientationLabel" xml:space="preserve">
     <value>Current orientation</value>
   </data>
@@ -147,11 +150,17 @@
   <data name="DisplayErrorDialogButtonLabel" xml:space="preserve">
     <value>Display error dialog</value>
   </data>
+  <data name="EnableDisableNewsSourceSwitchLabel" xml:space="preserve">
+    <value>Enable/Disable News Sources</value>
+  </data>
   <data name="EnterEmailLabel" xml:space="preserve">
     <value>Enter Email</value>
   </data>
   <data name="EnterPasswordLabel" xml:space="preserve">
     <value>Enter Password</value>
+  </data>
+  <data name="EntertainmentCategoryLabel" xml:space="preserve">
+    <value>Entertainment</value>
   </data>
   <data name="EnterTextToSpeakLabel" xml:space="preserve">
     <value>Enter text to speak</value>
@@ -159,8 +168,17 @@
   <data name="ErrorDialogLabel" xml:space="preserve">
     <value>Error</value>
   </data>
+  <data name="GeneralCategoryLabel" xml:space="preserve">
+    <value>General</value>
+  </data>
   <data name="GetOrientationButtonLabel" xml:space="preserve">
     <value>Get Orientation</value>
+  </data>
+  <data name="HeadlinesListPageTitle" xml:space="preserve">
+    <value>Top Headlines</value>
+  </data>
+  <data name="HealthCategoryLabel" xml:space="preserve">
+    <value>Health</value>
   </data>
   <data name="HelloWorldMessage" xml:space="preserve">
     <value>Hello World!</value>
@@ -168,11 +186,17 @@
   <data name="HomePageTitle" xml:space="preserve">
     <value>Home</value>
   </data>
+  <data name="InternetConnectionNotAvailableMessage" xml:space="preserve">
+    <value>Internet connection is not available!</value>
+  </data>
   <data name="InvalidUsernamePasswordErrorMessageLabel" xml:space="preserve">
     <value>Invalid username or password.</value>
   </data>
   <data name="LandscapeOrientationLabel" xml:space="preserve">
     <value>Landscape</value>
+  </data>
+  <data name="LoadingLabel" xml:space="preserve">
+    <value>Loading...</value>
   </data>
   <data name="LoginFailedErrorMessageLabel" xml:space="preserve">
     <value>Login failed.</value>
@@ -182,6 +206,15 @@
   </data>
   <data name="LogoutButtonLabel" xml:space="preserve">
     <value>Logout</value>
+  </data>
+  <data name="NewsCategoriesPageTitle" xml:space="preserve">
+    <value>News Categories</value>
+  </data>
+  <data name="NewsListPageTitle" xml:space="preserve">
+    <value>News Source List</value>
+  </data>
+  <data name="NewsPageTitle" xml:space="preserve">
+    <value>Latest News</value>
   </data>
   <data name="PhotoPickerPageTitle" xml:space="preserve">
     <value>Photo Picker</value>
@@ -195,6 +228,9 @@
   <data name="PortraitOrientationLabel" xml:space="preserve">
     <value>Portrait</value>
   </data>
+  <data name="ScienceCategoryLabel" xml:space="preserve">
+    <value>Science</value>
+  </data>
   <data name="SelectAlertToDisplayLabel" xml:space="preserve">
     <value>Select an alert to display</value>
   </data>
@@ -203,6 +239,12 @@
   </data>
   <data name="SpeakButtonLabel" xml:space="preserve">
     <value>Speak</value>
+  </data>
+  <data name="SportsCategoryLabel" xml:space="preserve">
+    <value>Sports</value>
+  </data>
+  <data name="TechnologyCategoryLabel" xml:space="preserve">
+    <value>Technology</value>
   </data>
   <data name="TextToSpeechPageTitle" xml:space="preserve">
     <value>Text to speech</value>

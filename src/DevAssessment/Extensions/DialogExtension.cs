@@ -1,4 +1,5 @@
-﻿using Prism.Services.Dialogs;
+﻿using DevAssessment.Views;
+using Prism.Services.Dialogs;
 using System;
 
 namespace DevAssessment.Extensions
@@ -10,7 +11,7 @@ namespace DevAssessment.Extensions
             var parameters = new DialogParameters();
             parameters.Add("Message", message);
 
-            dialogService.ShowDialog("AlertDialogPage", parameters, CloseDialogCallback);
+            dialogService.ShowDialog(nameof(AlertDialogPage), parameters, CloseDialogCallback);
         }
 
         public static void DisplayError(this IDialogService dialogService, Exception ex, string message = null)
@@ -28,13 +29,19 @@ namespace DevAssessment.Extensions
 
             parameters.Add("Exception", ex);
 
-            dialogService.ShowDialog("ErrorDialogPage", parameters, CloseDialogCallback);
+            dialogService.ShowDialog(nameof(ErrorDialogPage), parameters, CloseDialogCallback);
         }
 
-
-        private static void CloseDialogCallback(IDialogResult dialogResult)
+        public static void DisplayNews(this IDialogService dialogService, string url)
         {
+            var parameters = new DialogParameters
+            {
+                { "NewsReaderDialogUrl", url }
+            };
 
+            dialogService.ShowDialog(nameof(NewsReaderDialogPage), parameters, CloseDialogCallback);
         }
+
+        private static void CloseDialogCallback(IDialogResult dialogResult) { }
     }
 }

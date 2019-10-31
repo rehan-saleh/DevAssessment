@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:prism="http://prismlibrary.com"
+             prism:ViewModelLocator.AutowireViewModel="True"
+             x:Class="DevAssessment.Views.HeadlinesListPage"
+             xmlns:resource="clr-namespace:Common.Localization;assembly=Common"
+             Title="{x:Static resource:AppResources.HeadlinesListPageTitle}">
+  <StackLayout Padding="20">
+    <ListView ItemsSource="{Binding ArticleList}" SelectionMode="None" RowHeight="200">
+      <ListView.Behaviors>
+        <prism:EventToCommandBehavior Command="{Binding OpenNewsReaderDialogCommand}" 
+                            EventName="ItemTapped" EventArgsParameterPath="Item" />
+      </ListView.Behaviors>
+      <ListView.ItemTemplate>
+        <DataTemplate>
+          <ViewCell>
+            <Grid Padding="10">
+              <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+              </Grid.ColumnDefinitions>
+              <Image Grid.Column="0" Grid.Row="0">
+                <Image.Source>
+                  <UriImageSource Uri="{Binding urlToImage}" CachingEnabled="True" />
+                </Image.Source>
+              </Image>
+              <Label Text="{Binding title}" VerticalTextAlignment="Center" VerticalOptions="Center" 
+                     FontAttributes="Bold" Grid.Column="1" Grid.Row="0" />
+            </Grid>
+          </ViewCell>
+        </DataTemplate>
+      </ListView.ItemTemplate>
+    </ListView>
+    <StackLayout IsVisible="{Binding IsBusy}" Padding="12" BackgroundColor="Transparent"
+                 VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand">
+      <ActivityIndicator IsRunning="{Binding IsBusy}" />
+    </StackLayout>
+  </StackLayout>
+</ContentPage>
