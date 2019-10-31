@@ -1,0 +1,45 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:prism="http://prismlibrary.com"
+             prism:ViewModelLocator.AutowireViewModel="True"
+             x:Class="DevAssessment.Views.NewsSourcesListPage"
+             xmlns:resource="clr-namespace:Common.Localization;assembly=Common"
+             Title="{x:Static resource:AppResources.NewsListPageTitle}">
+  <StackLayout Padding="20">
+    <Grid Padding="10">
+      <Grid.ColumnDefinitions>
+        <ColumnDefinition Width="5*"/>
+        <ColumnDefinition Width="*"/>
+      </Grid.ColumnDefinitions>
+      <Grid.RowDefinitions>
+        <RowDefinition Height="Auto"/>
+      </Grid.RowDefinitions>
+      <Label Text="{x:Static resource:AppResources.EnableDisableNewsSourceSwitchLabel}" 
+             VerticalTextAlignment="Center" VerticalOptions="Center" FontAttributes="Bold" />
+      <Switch x:Name="NewsSourceSwitch" IsToggled="{Binding IsNewsSourceEnabled}" 
+              VerticalOptions="Center" Grid.Column="1" />
+    </Grid>
+    <ListView ItemsSource="{Binding NewsChannelList}" SelectionMode="None">
+      <ListView.ItemTemplate>
+        <DataTemplate>
+          <ViewCell>
+            <Grid Padding="10">
+              <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+              </Grid.ColumnDefinitions>
+              <Label Text="{Binding name}" VerticalTextAlignment="Center" VerticalOptions="Center" />
+              <Switch IsEnabled="True" IsToggled="{Binding Source={x:Reference NewsSourceSwitch}, Path=IsToggled}" 
+                      VerticalOptions="Center" Grid.Column="1"  />
+            </Grid>
+          </ViewCell>
+        </DataTemplate>
+      </ListView.ItemTemplate>
+    </ListView>
+    <StackLayout IsVisible="{Binding IsBusy}" Padding="12" BackgroundColor="Transparent"
+                 VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand">
+      <ActivityIndicator IsRunning="{Binding IsBusy}" />
+    </StackLayout>
+  </StackLayout>
+</ContentPage>

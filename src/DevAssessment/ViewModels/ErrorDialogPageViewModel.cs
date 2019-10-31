@@ -1,19 +1,16 @@
-﻿using Prism.Commands;
-using Prism.Logging;
-using Prism.Mvvm;
+﻿using Prism.Logging;
 using Prism.Services.Dialogs;
 using System;
 
 namespace DevAssessment.ViewModels
 {
-    public class ErrorDialogPageViewModel : BindableBase, IDialogAware
+    public class ErrorDialogPageViewModel : DialogBase
     {
         private ILogger Logger { get; }
+
         public ErrorDialogPageViewModel(ILogger logger)
         {
             Logger = logger;
-
-            CloseDialogCommand = new DelegateCommand(() => RequestClose(null));
         }
 
         public string ExceptionMessage
@@ -23,20 +20,7 @@ namespace DevAssessment.ViewModels
         }
         private string _exceptionMessage;
 
-        public event Action<IDialogParameters> RequestClose;
-
-        public DelegateCommand CloseDialogCommand { get; }
-
-        public bool CanCloseDialog()
-        {
-            return true;
-        }
-
-        public void OnDialogClosed()
-        {
-        }
-
-        public void OnDialogOpened(IDialogParameters parameters)
+        public override void OnDialogOpened(IDialogParameters parameters)
         {
             if (parameters.ContainsKey("Message"))
             {

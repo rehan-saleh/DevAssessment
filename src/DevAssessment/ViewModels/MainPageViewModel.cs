@@ -34,7 +34,6 @@ namespace DevAssessment.ViewModels
             ModuleManager = moduleManager;
             EventAggregator = eventAggregator;
 
-            Title = "Dev Assessment Test";
             Items = MenuService.Items;
             NavigationCommand = new DelegateCommand<Item>(OnNavigationCommandExecuted);
             LogOutCommand = new DelegateCommand(ExecuteLogOutCommand);

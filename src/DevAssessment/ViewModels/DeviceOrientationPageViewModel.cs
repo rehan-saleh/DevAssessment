@@ -1,4 +1,5 @@
-﻿using DevAssessment.Models;
+﻿using Common.Localization;
+using DevAssessment.Models;
 using DevAssessment.Services;
 using Prism.Commands;
 using Prism.Mvvm;
@@ -8,6 +9,7 @@ namespace DevAssessment.ViewModels
     public class DeviceOrientationPageViewModel : BindableBase
     {
         private IDeviceOrientationService DeviceOrientationService { get; }
+
         public DeviceOrientationPageViewModel(IDeviceOrientationService deviceOrientationService)
         {
             DeviceOrientationService = deviceOrientationService;
@@ -15,18 +17,34 @@ namespace DevAssessment.ViewModels
             GetDeviceOrientationCommand = new DelegateCommand(ExecuteGetDeviceOrientationCommand);
         }
 
-        public DeviceOrientation CurrentOrientation
+        public string CurrentOrientation
         {
             get => currentOrientation;
             set => SetProperty(ref currentOrientation, value);
         }
-        private DeviceOrientation currentOrientation;
+        private string currentOrientation = nameof(DeviceOrientation.Undefined);
 
         public DelegateCommand GetDeviceOrientationCommand { get; }
 
         private void ExecuteGetDeviceOrientationCommand()
         {
-            CurrentOrientation = DeviceOrientationService.GetOrientation();
+            DeviceOrientation orientation = DeviceOrientationService.GetOrientation();
+
+            switch (orientation)
+            {
+                case DeviceOrientation.Undefined:
+                    CurrentOrientation = AppResources.UndefinedOrientationLabel;
+                    break;
+                case DeviceOrientation.Landscape:
+                    CurrentOrientation = AppResources.LandscapeOrientationLabel;
+                    break;
+                case DeviceOrientation.Portrait:
+                    CurrentOrientation = AppResources.PortraitOrientationLabel;
+                    break;
+                default:
+                    CurrentOrientation = AppResources.UndefinedOrientationLabel;
+                    break;
+            }
         }
     }
 }

@@ -9,6 +9,7 @@ namespace DevAssessment.ViewModels
     public class DialogDisplayPageViewModel : BindableBase
     {
         private IDialogService DialogService { get; }
+
         public DialogDisplayPageViewModel(IDialogService dialogService)
         {
             DialogService = dialogService;
@@ -18,6 +19,7 @@ namespace DevAssessment.ViewModels
         }
 
         public DelegateCommand DisplayAlertDialogCommand { get; }
+
         public DelegateCommand DisplayErrorDialogCommand { get; }
 
         private void DisplayAlertDialog()

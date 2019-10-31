@@ -88,6 +88,15 @@ namespace Common.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Business.
+        /// </summary>
+        public static string BusinessCategoryLabel {
+            get {
+                return ResourceManager.GetString("BusinessCategoryLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Current orientation.
         /// </summary>
         public static string CurrentOrientationLabel {
@@ -151,6 +160,15 @@ namespace Common.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Enable/Disable News Sources.
+        /// </summary>
+        public static string EnableDisableNewsSourceSwitchLabel {
+            get {
+                return ResourceManager.GetString("EnableDisableNewsSourceSwitchLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Enter Email.
         /// </summary>
         public static string EnterEmailLabel {
@@ -165,6 +183,15 @@ namespace Common.Localization {
         public static string EnterPasswordLabel {
             get {
                 return ResourceManager.GetString("EnterPasswordLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Entertainment.
+        /// </summary>
+        public static string EntertainmentCategoryLabel {
+            get {
+                return ResourceManager.GetString("EntertainmentCategoryLabel", resourceCulture);
             }
         }
         
@@ -187,11 +214,38 @@ namespace Common.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to General.
+        /// </summary>
+        public static string GeneralCategoryLabel {
+            get {
+                return ResourceManager.GetString("GeneralCategoryLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Get Orientation.
         /// </summary>
         public static string GetOrientationButtonLabel {
             get {
                 return ResourceManager.GetString("GetOrientationButtonLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Top Headlines.
+        /// </summary>
+        public static string HeadlinesListPageTitle {
+            get {
+                return ResourceManager.GetString("HeadlinesListPageTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Health.
+        /// </summary>
+        public static string HealthCategoryLabel {
+            get {
+                return ResourceManager.GetString("HealthCategoryLabel", resourceCulture);
             }
         }
         
@@ -214,6 +268,15 @@ namespace Common.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Internet connection is not available!.
+        /// </summary>
+        public static string InternetConnectionNotAvailableMessage {
+            get {
+                return ResourceManager.GetString("InternetConnectionNotAvailableMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Invalid username or password..
         /// </summary>
         public static string InvalidUsernamePasswordErrorMessageLabel {
@@ -228,6 +291,15 @@ namespace Common.Localization {
         public static string LandscapeOrientationLabel {
             get {
                 return ResourceManager.GetString("LandscapeOrientationLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Loading....
+        /// </summary>
+        public static string LoadingLabel {
+            get {
+                return ResourceManager.GetString("LoadingLabel", resourceCulture);
             }
         }
         
@@ -255,6 +327,33 @@ namespace Common.Localization {
         public static string LogoutButtonLabel {
             get {
                 return ResourceManager.GetString("LogoutButtonLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to News Categories.
+        /// </summary>
+        public static string NewsCategoriesPageTitle {
+            get {
+                return ResourceManager.GetString("NewsCategoriesPageTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to News Source List.
+        /// </summary>
+        public static string NewsListPageTitle {
+            get {
+                return ResourceManager.GetString("NewsListPageTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Latest News.
+        /// </summary>
+        public static string NewsPageTitle {
+            get {
+                return ResourceManager.GetString("NewsPageTitle", resourceCulture);
             }
         }
         
@@ -295,6 +394,15 @@ namespace Common.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Science.
+        /// </summary>
+        public static string ScienceCategoryLabel {
+            get {
+                return ResourceManager.GetString("ScienceCategoryLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Select an alert to display.
         /// </summary>
         public static string SelectAlertToDisplayLabel {
@@ -318,6 +426,24 @@ namespace Common.Localization {
         public static string SpeakButtonLabel {
             get {
                 return ResourceManager.GetString("SpeakButtonLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Sports.
+        /// </summary>
+        public static string SportsCategoryLabel {
+            get {
+                return ResourceManager.GetString("SportsCategoryLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Technology.
+        /// </summary>
+        public static string TechnologyCategoryLabel {
+            get {
+                return ResourceManager.GetString("TechnologyCategoryLabel", resourceCulture);
             }
         }
         

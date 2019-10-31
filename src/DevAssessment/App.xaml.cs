@@ -15,6 +15,8 @@ using Prism.Navigation;
 using Prism.Services.Dialogs;
 using System;
 using System.Linq;
+using Xamarin.Essentials.Implementation;
+using Xamarin.Essentials.Interfaces;
 using Xamarin.Forms;
 
 namespace DevAssessment
@@ -52,12 +54,21 @@ namespace DevAssessment
 
         protected override void RegisterTypes(IContainerRegistry containerRegistry)
         {
+            //Regitser for navigations
             containerRegistry.RegisterForNavigation<NavigationPage>();
+
+            //Register services
             containerRegistry.Register<ILogger, ConsoleLoggingService>();
             containerRegistry.Register<IMenuService, MenuService>();
             containerRegistry.Register<IDialogService, DialogService>();
+            containerRegistry.Register<IApiClient, ApiClient>();
+            containerRegistry.Register<INewsService, NewsService>();
+            containerRegistry.Register<IConnectivity, ConnectivityImplementation>();
+
+            //Register dialogs
             containerRegistry.RegisterDialog<AlertDialogPage, AlertDialogPageViewModel>();
             containerRegistry.RegisterDialog<ErrorDialogPage, ErrorDialogPageViewModel>();
+            containerRegistry.RegisterDialog<NewsReaderDialogPage, NewsReaderDialogPageViewModel>();
         }
 
         protected override void ConfigureModuleCatalog(IModuleCatalog moduleCatalog)

@@ -12,6 +12,7 @@ namespace DevAssessment.ViewModels
     public class PhotoPickerPageViewModel : BindableBase
     {
         private IPhotoPickerService PhotoPickerService { get; }
+
         public PhotoPickerPageViewModel(IPhotoPickerService photoPickerService)
         {
             PhotoPickerService = photoPickerService;

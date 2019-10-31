@@ -1,12 +1,13 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <Frame xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:prism="http://prismlibrary.com"
-             prism:ViewModelLocator.AutowireViewModel="True"
-             x:Class="DevAssessment.Views.ErrorDialogPage">
+       xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+       xmlns:prism="http://prismlibrary.com"
+       prism:ViewModelLocator.AutowireViewModel="True"
+       x:Class="DevAssessment.Views.ErrorDialogPage"
+       xmlns:resource="clr-namespace:Common.Localization;assembly=Common">
   <StackLayout Padding="20">
-    <Label Text="Error" FontAttributes="Bold"/>
+    <Label Text="{x:Static resource:AppResources.ErrorDialogLabel}" FontAttributes="Bold"/>
     <Label Text="{Binding ExceptionMessage}" />
-    <Button Text="Close" Command="{Binding CloseDialogCommand}" />
+    <Button Text="{x:Static resource:AppResources.ErrorDialogLabel}" Command="{Binding CloseCommand}" />
   </StackLayout>
 </Frame>
